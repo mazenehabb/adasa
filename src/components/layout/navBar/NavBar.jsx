@@ -1,12 +1,17 @@
 import React from "react";
-// import heroImg from "./assets/hero.png";
 
-import heroImg from "../../assets/images/logo.png";
-
+import heroImg from "../../../assets/images/logo.png";
+import { NavLink } from "react-router-dom";
+const navLinkClass = ({ isActive }) =>
+  `px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+    isActive
+      ? "bg-linear-to-r from-orange-500 to-orange-600 text-white"
+      : "text-neutral-400 hover:text-white"
+  }`;
 export default function NavBar() {
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-transparent">
+      <nav className="mb-20 fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <a
@@ -32,28 +37,17 @@ export default function NavBar() {
             </a>
             <div className="hidden md:flex items-center">
               <div className="flex items-center bg-[#161616] rounded-full p-1.5 border border-[#262626]">
-                <a
-                  aria-current="page"
-                  className="px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-linear-to-r from-orange-500 to-orange-600 text-white"
-                  href="/"
-                  data-discover="true"
-                >
+                <NavLink to="/" end className={navLinkClass}>
                   الرئيسية
-                </a>
-                <a
-                  className="px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 text-neutral-400 hover:text-white"
-                  href="/blog"
-                  data-discover="true"
-                >
+                </NavLink>
+
+                <NavLink to="/blogPage" className={navLinkClass}>
                   المدونة
-                </a>
-                <a
-                  className="px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 text-neutral-400 hover:text-white"
-                  href="/about"
-                  data-discover="true"
-                >
+                </NavLink>
+
+                <NavLink to="/about" className={navLinkClass}>
                   من نحن
-                </a>
+                </NavLink>
               </div>
             </div>
             <div className="hidden md:flex items-center gap-3">
@@ -109,7 +103,7 @@ export default function NavBar() {
                 </a>
                 <a
                   className="px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 text-neutral-400 hover:bg-[#1a1a1a] hover:text-white"
-                  href="/blog"
+                  href="/blogPage"
                   data-discover="true"
                 >
                   المدونة
@@ -123,7 +117,7 @@ export default function NavBar() {
                 </a>
                 <a
                   className="btn-primary text-sm text-center mt-2"
-                  href="/blog"
+                  href="/blogPage"
                   data-discover="true"
                 >
                   ابدأ القراءة

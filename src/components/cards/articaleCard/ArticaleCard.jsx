@@ -1,21 +1,24 @@
 import React from "react";
+import { Link, NavLink } from "react-router-dom";
 
 export default function ArticaleCard(props) {
-  const { article } = props;
+  const { post } = props;
+  console.log(post.title);
+
   return (
     <article
       className="group relative bg-[#161616] rounded-3xl overflow-hidden border border-[#262626] hover:border-orange-500/30 transition-all duration-500"
       style={{ animationDelay: "0ms" }}
     >
-      {/* href={article.link} data-discover="true" */}
+      {/* href={post.link} data-discover="true" */}
       {/*  Above code to the a tag */}
-      <a className="block" href={article.link} data-discover="true">
+      <div className="block" data-discover="true">
         <div className="grid md:grid-cols-2 gap-0">
           <div className="relative h-72 md:h-[400px] overflow-hidden">
             <img
-              alt={article.title}
+              alt={post.title}
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-              src={article.image}
+              src={post.image}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
@@ -35,7 +38,7 @@ export default function ArticaleCard(props) {
           <div className="p-8 md:p-10 flex flex-col justify-center bg-[#161616]">
             <div className="flex items-center gap-3 mb-4">
               <span className="px-3 py-1 bg-orange-500/10 text-orange-500 text-xs font-semibold rounded-full border border-orange-500/20">
-                {article.category}
+                {post.category}
               </span>
               <span className="flex items-center gap-1 text-sm text-neutral-500">
                 <svg
@@ -51,23 +54,23 @@ export default function ArticaleCard(props) {
                     d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                {article.readTime}
+                {post.readTime}
               </span>
             </div>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-orange-500 transition-colors duration-300 leading-tight">
-              {article.title}
+              {post.title}
             </h2>
             <p className="text-neutral-400 mb-6 line-clamp-3 leading-relaxed">
-              {article.description}
+              {post.excerpt}
             </p>
             <div className="flex items-center justify-between mt-auto">
               <div className="flex items-center gap-3">
                 <div className="relative">
                   <img
-                    alt={article.author}
+                    alt={post.author.name}
                     className="w-12 h-12 rounded-full object-cover ring-2 ring-[#262626] shadow-md"
                     src={
-                      article.authorImage ||
+                      post.author.avatar ||
                       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
                     }
                   />
@@ -75,13 +78,14 @@ export default function ArticaleCard(props) {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-white">
-                    {article.author}
+                    {post.author.role}
                   </p>
-                  <p className="text-xs text-neutral-500">{article.date}</p>
+                  <p className="text-xs text-neutral-500">{post.date}</p>
                 </div>
               </div>
               <span className="inline-flex items-center gap-2 text-orange-500 font-semibold text-sm group-hover:gap-3 transition-all duration-300">
-                اقرأ المقال
+                {/* <button className="">اقرأ المقال</button> */}
+                <Link to={`/blog/${post.slug}`}>اقرأ المقال</Link>
                 <svg
                   className="w-5 h-5 rotate-180"
                   fill="none"
@@ -99,7 +103,7 @@ export default function ArticaleCard(props) {
             </div>
           </div>
         </div>
-      </a>
+      </div>
     </article>
   );
 }

@@ -1,25 +1,36 @@
-import { useState } from "react";
-// import heroImg from "./assets/hero.png";
-// import reactLogo from "./assets/react.svg";
-// import viteLogo from "./assets/vite.svg";
-
 import "./App.css";
-import NavBar from "./components/navBar/NavBar";
-import Hero from "./components/hero/Hero";
-import Test from "./components/testComponent/Test";
-import Articales from "./components/articales/Articales";
-import CardsTest from "./components/testComponent/CardsTest";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ArticaleDetailsPage from "./pages/ArticaleDetailsPage";
+import HomePage from "./pages/HomePage";
+import RootLayout from "./layouts/RootLayout";
+import BlogPage from "./pages/BlogPage";
+import ArticaleCard from "./components/cards/articaleCard/ArticaleCard";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <RootLayout />,
+      children: [
+        {
+          path: "/",
+          element: <HomePage />,
+        },
 
+        { path: "detalisArticle", element: <ArticaleDetailsPage /> },
+        { path: "blogPage", element: <BlogPage /> },
+        { path: "blog/:slug", element: <ArticaleDetailsPage /> },
+        {
+          path: "*",
+          element: <p>Not Found</p>,
+        },
+      ],
+    },
+  ]);
   return (
     <>
-      <NavBar />
-      <Hero />
-      <Articales />
-
-      {/* <Test /> */}
+      <RouterProvider router={router} />
     </>
   );
 }

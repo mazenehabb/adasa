@@ -1,21 +1,9 @@
 import React, { useState } from "react";
-import ProductCard from "../articaleCard/ArticaleCard";
-import ArticaleCard from "../articaleCard/ArticaleCard";
-import { articles } from "../../data/articles";
+import ProductCard from "../../../cards/articaleCard/ArticaleCard";
+import ArticaleCard from "../../../cards/articaleCard/ArticaleCard";
+import { articles } from "../../../../data/articles";
 
 export default function Articales() {
-  // const [useArticles, setuseArticles] = useState(articles);
-
-  // function deletArtical(index) {
-  //   // 1. Deep copy
-  //   let articlesCopy = structuredClone(useArticles);
-
-  //   // 2. Action on the copy
-  //   articlesCopy.splice(index, 1);
-
-  //   // 3. Set the update
-  //   setuseArticles(articlesCopy);
-  // }
   return (
     <section className="py-24 bg-[#0a0a0a] relative overflow-hidden">
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-orange-500/5 to-transparent" />

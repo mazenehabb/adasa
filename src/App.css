@@ -1,0 +1,18 @@
+.card {
+    background: #161616;
+    border: 1px solid #262626;
+    border-radius: 1.5rem;
+}
+
+.input-dark {
+    background: #161616ff;
+    /* ← probably the culprit if it looks wrong */
+    border: 1px solid rgb(59, 59, 59);
+    border-radius: 10px;
+    color: gray;
+}
+
+body {
+    background: #161616;
+
+}
